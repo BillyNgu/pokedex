@@ -5,8 +5,19 @@
         <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Numéro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
     </body>
 </html>
