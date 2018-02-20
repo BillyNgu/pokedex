@@ -16,6 +16,12 @@ require_once './dao.php';
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
     <body>
-
+        <nav>
+            <ul>
+                <li><a href="index.php" id="actif">Accueil</a></li>
+                <li><a href="attack.php">Attaques</a></li>
+            </ul>
+        </nav>
+        <?php getAllAttack(); ?>
     </body>
 </html>

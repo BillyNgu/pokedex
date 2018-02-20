@@ -6,7 +6,7 @@
  */
 require_once './bdd/mySql.inc.php';
 require_once './dao.php';
- ?>
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +15,21 @@ require_once './dao.php';
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
     <body>
+<<<<<<< HEAD
         <?php getAllPokemon(); ?>
+=======
+<<<<<<< HEAD
+        <nav>
+            <ul>
+                <li><a href="index.php" id="actif">Accueil</a></li>
+                <li><a href="attack.php">Attaques</a></li>
+            </ul>
+        </nav>
+        <?php getAllPokemon(); ?>
+=======
+      <nav></nav>
+        <?php echo getAllPokemon(); ?>
+>>>>>>> 06e713ecdc5ff1790a99853c723e530ff9fdf755
         <!--<table>
             <thead>
                 <tr>
@@ -36,5 +50,6 @@ require_once './dao.php';
                 </tr>
             </tbody>
         </table>-->
+>>>>>>> b4f253ae7de9518d0b2882131cdcef1f8fa7fdba
     </body>
 </html>
