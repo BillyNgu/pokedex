@@ -4,6 +4,8 @@
  * Description : List of Pokemon
  * Date : 20.02.18
  */
+require_once './bdd/mySql.inc.php';
+require_once './dao.php';
  ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +15,8 @@
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
     <body>
-        <table>
+        <?php echo getAllPokemon(); ?>
+        <!--<table>
             <thead>
                 <tr>
                     <th>#</th>
@@ -32,6 +35,6 @@
                   <td></td>
                 </tr>
             </tbody>
-        </table>
+        </table>-->
     </body>
 </html>

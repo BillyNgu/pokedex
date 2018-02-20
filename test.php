@@ -1,8 +1,4 @@
 <?php
-require './bdd/connectionBase.php';
-require './bdd/mySql.inc.php';
-require './dao.php';
-
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,8 +1,10 @@
 <?php
+require_once './bdd/mySql.inc.php';
+require_once './bdd/connectionBase.php';
 
 function getAllPokemon(){
 
-        $resultat = m151db()->query("SELECT `pokemonDexId`, `pokemonName`  FROM `pokemon`
+        $resultat = pokedb()->query("SELECT `pokemonDexId`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
         $nomColl = array("Id","Nom");
 
