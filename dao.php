@@ -22,4 +22,19 @@ function getAllPokemon(){
         echo "</table>";
 
 }
+
+
+function getType($id){
+
+  $idTypes = pokedb()->query("SELECT `typeId` FROM `istype` WHERE `pokemonId` = $id ;")
+  echo $idTypes;
+    if($id)
+  foreach ($idTypes as $key => $value) {
+      $idTypes += pokedb()->query("SELECT `typeName` FROM `type` WHERE `typeId` =$value ")
+    SELECT distinct t.typeName FROM istype as i, type as t, pokemon as p WHERE t.typeId = i.typeId AND i.pokemonId = '1'
+
+  }
+
+
+}
       ?>
