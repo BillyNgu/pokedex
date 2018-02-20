@@ -1,3 +1,10 @@
+<?php
+/*
+ * Authors : Dubas Loïc, Pighini Lucas, Nguyen Billy
+ * Description : List of Pokemon
+ * Date : 20.02.18
+ */
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
