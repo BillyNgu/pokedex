@@ -11,12 +11,9 @@ require_once './dao.php';
 <html>
     <head>
         <meta charset="UTF-8">
-<<<<<<< HEAD
         <title>Liste des attaques</title>
-=======
         <title>Pokédex</title>
         <link rel="stylesheet" href="css/bootstrap.css">
->>>>>>> c004125074bf202563b96e2dda685962fab28a47
     </head>
     <body>
 
