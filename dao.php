@@ -22,4 +22,23 @@ function getAllPokemon(){
         echo "</table>";
 
 }
+
+function getAllAttack(){
+    $resultat = pokedb()->query("SELECT `moveName`, `movePower`, `moveAccuracy` FROM `move`
+")->fetchAll(PDO::FETCH_ASSOC);
+        $nomColl = array("Attaque", "Puissance", "Précision");
+
+        echo "<table>";
+        foreach ($nomColl AS $key => $valeur){
+            echo "<th>$valeur</th>";
+        }
+        foreach ($resultat AS $key => $valeur){
+            echo "<tr>";
+            foreach ($valeur AS $key => $valeur2){
+                echo "<td>$valeur2</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+}
       ?>
