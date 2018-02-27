@@ -15,10 +15,6 @@ require_once './dao.php';
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
     <body>
-<<<<<<< HEAD
-        <?php getAllPokemon(); ?>
-=======
-<<<<<<< HEAD
         <nav>
             <ul>
                 <li><a href="index.php" id="actif">Accueil</a></li>

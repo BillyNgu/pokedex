@@ -23,21 +23,17 @@ function getAllPokemon(){
 
 }
 
-<<<<<<< HEAD
-
 function getType($id){
 
-  $idTypes = pokedb()->query("SELECT `typeId` FROM `istype` WHERE `pokemonId` = $id ;")
+  $idTypes = pokedb()->query("SELECT `typeId` FROM `istype` WHERE `pokemonId` = $id ;");
   echo $idTypes;
     if($id)
   foreach ($idTypes as $key => $value) {
-      $idTypes += pokedb()->query("SELECT `typeName` FROM `type` WHERE `typeId` =$value ")
-    SELECT distinct t.typeName FROM istype as i, type as t, pokemon as p WHERE t.typeId = i.typeId AND i.pokemonId = '1'
+      $idTypes += pokedb()->query("SELECT `typeName` FROM `type` WHERE `typeId` =$value ") .
+    "SELECT distinct t.typeName FROM istype as i, type as t, pokemon as p WHERE t.typeId = i.typeId AND i.pokemonId = '1'";
 
   }
-
-
-=======
+  
 function getAllAttack(){
     $resultat = pokedb()->query("SELECT `moveName`, `movePower`, `moveAccuracy` FROM `move`
 ")->fetchAll(PDO::FETCH_ASSOC);
@@ -55,6 +51,5 @@ function getAllAttack(){
             echo "</tr>";
         }
         echo "</table>";
->>>>>>> 06e713ecdc5ff1790a99853c723e530ff9fdf755
 }
       ?>
