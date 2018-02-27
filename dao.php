@@ -9,10 +9,14 @@ function getAllPokemon() {
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Id", "Nom");
 
-    echo "<table>";
+    echo "<table class=\"table table-info\">";
+    echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $valeur) {
+
         echo "<th>$valeur</th>";
     }
+    echo "</thead>";
+    echo "<tbody>";
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
         foreach ($valeur AS $key => $valeur2) {
@@ -20,6 +24,7 @@ function getAllPokemon() {
         }
         echo "</tr>";
     }
+    echo "</tbody>";
     echo "</table>";
 }
 
@@ -50,4 +55,8 @@ function getAllAttack() {
         echo "</tr>";
     }
     echo "</table>";
+}
+
+function getDescription() {
+    
 }
