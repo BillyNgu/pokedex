@@ -35,6 +35,24 @@ require_once './dao.php';
           </ul>
         </div>
       </nav>
+<!--            <table class="table table-info">
+    <thead class="table thead">
+        <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td>Bulbizarre</td>
+          <td>Plante / Poison</td>
+        </tr>
+    </tbody>
+</table>-->
             <?php getAllPokemon(); ?>
         </div>
     </body>
