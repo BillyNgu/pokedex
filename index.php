@@ -22,10 +22,6 @@ require_once './dao.php';
             </ul>
         </nav>
         <?php getAllPokemon(); ?>
-=======
-      <nav></nav>
-        <?php echo getAllPokemon(); ?>
->>>>>>> 06e713ecdc5ff1790a99853c723e530ff9fdf755
         <!--<table>
             <thead>
                 <tr>
@@ -46,6 +42,5 @@ require_once './dao.php';
                 </tr>
             </tbody>
         </table>-->
->>>>>>> b4f253ae7de9518d0b2882131cdcef1f8fa7fdba
     </body>
 </html>
