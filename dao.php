@@ -5,9 +5,9 @@ require_once './bdd/connectionBase.php';
 
 function getAllPokemon() {
 
-    $resultat = pokedb()->query("SELECT `pokemonDexId`, `pokemonName`  FROM `pokemon`
+    $resultat = pokedb()->query("SELECT `pokemonDexId`, `pokemonSprite`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
-    $nomColl = array("Id", "Nom");
+    $nomColl = array("#", "Image", "Nom", "Type");
 
     echo "<table class=\"table table-info\">";
     echo "<thead class=\"table thead\">";
