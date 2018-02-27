@@ -20,7 +20,7 @@ function getAllPokemon() {
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
         foreach ($valeur AS $key => $valeur2) {
-            echo "<td>$valeur2</td>";
+            echo "<td><a href=\"descriptionPkmn.php?pokemonDexId=\">$valeur2</a></td>";
         }
         echo "</tr>";
     }
