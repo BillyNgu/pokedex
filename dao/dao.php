@@ -4,7 +4,6 @@ require_once './dao/mySql.inc.php';
 require_once './dao/connectionBase.php';
 
 function getAllPokemon() {
-
     $resultat = pokedb()->query("SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
@@ -20,8 +19,10 @@ function getAllPokemon() {
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
         foreach ($valeur AS $key => $valeur2) {
-            echo "<td><a href=\"descriptionPkmn.php?pokemonDexId=\">$valeur2</a></td>";
+            echo '<td></td>';
+            echo '<img height=\"64\" width=\"64\" src="data:image/jpeg;base64,'. base64_encode($valeur2) .'" />';
         }
+        echo "<td><a href=\"descriptionPkmn.php?pokemonDexId=\">$valeur2</a></td>";
         echo "</tr>";
     }
     echo "</tbody>";
