@@ -1,7 +1,7 @@
 <?php
 /*
  * Authors : Dubas Loïc, Pighini Lucas, Nguyen Billy
- * Description : List of all attacks
+ * Description : List of all types
  * Date : 20.02.18
  */
 require_once './bdd/mySql.inc.php';
@@ -24,12 +24,12 @@ require_once './dao.php';
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="index.php">Index</a>
-                        <a class="nav-item nav-link" href="#">Liste des attaques<span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="types.php">Liste des types</a>
+                        <a class="nav-item nav-link" href="attack.php">Liste des attaques</a>
+                        <a class="nav-item nav-link" href="#">Liste des types<span class="sr-only">(current)</span></a>
                     </div>
                 </div>
             </nav>
-            <?php getAllAttack(); ?>
+            <?php getAllPokemon(); ?>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>
