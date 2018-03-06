@@ -29,7 +29,7 @@ require_once './dao.php';
                     </div>
                 </div>
             </nav>
-            <?php getAllPokemon(); ?>
+            <?php getAllTypes(); ?>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>
