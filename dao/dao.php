@@ -4,6 +4,7 @@ require_once './dao/mySql.inc.php';
 require_once './dao/connectionBase.php';
 
 function getAllPokemon() {
+    
     $resultat = pokedb()->query("SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
@@ -18,11 +19,32 @@ function getAllPokemon() {
     echo "<tbody>";
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
+        $cpt = 0;
         foreach ($valeur AS $key => $valeur2) {
-            echo '<td></td>';
-            echo '<img height=\"64\" width=\"64\" src="data:image/jpeg;base64,'. base64_encode($valeur2) .'" />';
+            $cpt++;
+                        
+            switch ($cpt) {
+                case 1:
+                    echo "<td>$valeur2</td>";
+                    break;
+                case 2:
+                    $imageblob = $valeur2;
+                    echo '<td><img height=\"64\" width=\"64\" src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" /></td>';
+                    break;
+                case 3:
+                    echo "<td><a href=\"descriptionPkmn.php?pokemonId=\">$valeur2</a></td>";
+                    break;
+                case 4:
+                    echo "<td></td>";
+                    break;
+                default:
+                    break;
+            }
+            
+            if ($cpt == 4) {
+                $cpt = 0;
+            }          
         }
-        echo "<td><a href=\"descriptionPkmn.php?pokemonDexId=\">$valeur2</a></td>";
         echo "</tr>";
     }
     echo "</tbody>";
