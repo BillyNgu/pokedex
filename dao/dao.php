@@ -9,7 +9,7 @@ function getAllPokemon() {
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
 
-    echo "<table class=\"table table-info\">";
+    echo "<table class=\"table\">";
     echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $valeur) {
 
@@ -33,7 +33,7 @@ function getAllTypes() {
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Types");
 
-    echo "<table>";
+    echo "<table class=\"table\">";
     foreach ($nomColl AS $key => $valeur) {
         echo "<th>$valeur</th>";
     }
@@ -52,7 +52,7 @@ function getAllAttack() {
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Attaque", "Puissance", "Précision");
 
-    echo "<table>";
+    echo "<table class=\"table\">";
     foreach ($nomColl AS $key => $valeur) {
         echo "<th>$valeur</th>";
     }

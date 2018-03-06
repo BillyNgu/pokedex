@@ -4,8 +4,7 @@
  * Description : List of all types
  * Date : 06.03.18
  */
-require_once './bdd/mySql.inc.php';
-require_once './dao.php';
+require_once './dao/dao.php';
 ?>
 <!DOCTYPE html>
 <html>
