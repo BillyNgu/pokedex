@@ -11,7 +11,7 @@ require_once './dao/dao.php';
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Pokedex</title>
+        <title>Pokédex</title>
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
     <body class="body">
