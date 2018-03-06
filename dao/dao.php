@@ -39,11 +39,7 @@ function getAllPokemon() {
                     break;
                 default:
                     break;
-            }
-            
-            if ($cpt == 4) {
-                $cpt = 0;
-            }          
+            }        
         }
         echo "</tr>";
     }
