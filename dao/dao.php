@@ -5,7 +5,7 @@ require_once './dao/connectionBase.php';
 
 function getAllPokemon() {
 
-    $resultat = pokedb()->query("SELECT `pokemonDexId`, `pokemonSprite`, `pokemonName`  FROM `pokemon`
+    $resultat = pokedb()->query("SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
 
