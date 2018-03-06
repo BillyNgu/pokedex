@@ -76,6 +76,6 @@ function getAllAttack() {
 //                    "SELECT distinct t.typeName FROM istype as i, type as t, pokemon as p WHERE t.typeId = i.typeId AND i.pokemonId = '1'";
 //        }
 
-function getDescription() {
+function getInfoPokemon() {
     
 }
