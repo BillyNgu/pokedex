@@ -4,7 +4,7 @@
  * Description : List of all Pokemon
  * Date : 20.02.18
  */
-//require_once './dao/mySql.inc.php';
+
 require_once './dao/dao.php';
 ?>
 <!DOCTYPE html>
