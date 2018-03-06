@@ -2,7 +2,7 @@
 /*
  * Authors : Dubas Loïc, Pighini Lucas, Nguyen Billy
  * Description : List of all types
- * Date : 20.02.18
+ * Date : 06.03.18
  */
 require_once './bdd/mySql.inc.php';
 require_once './dao.php';
