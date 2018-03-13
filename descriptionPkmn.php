@@ -24,7 +24,7 @@ $result = getDescription($_GET['pokemonId']);
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Index<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="index.php">Index<span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="attack.php">Liste des attaques</a>
                         <a class="nav-item nav-link" href="types.php">Liste des types</a>
                     </div>
