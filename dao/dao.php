@@ -8,13 +8,13 @@ function getAllPokemon() {
     $resultat = pokedb()->query("SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
+    
     $pkmnType = getPokemonType(1)->fetchAll();
     $type="";
     foreach ($pkmnType as $key => $value) {
        var_dump($value["typeName"]);
        $type.=$value["typeName"]. " ";
     }
-    
 
     echo "<table class=\"table\">";
     echo "<thead class=\"table thead\">";
@@ -41,7 +41,11 @@ function getAllPokemon() {
                     break;
                 case 2:
                     $imageblob = $valeur2;
-                    echo '<td><img height=\'64\' width=\'64\' src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" /></td>';
+                    echo '<td>'
+                    . '<a href="descriptionPkmn.php?pokemonId=' . $id . '">'
+                            . '<img height=\'64\' width=\'64\' src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" />'
+                            . '</a>'
+                            . '</td>';
                     break;
                 case 3:
 
@@ -62,8 +66,10 @@ function getAllPokemon() {
 }
 
 function getAllTypes() {
-    $resultat = pokedb()->query("SELECT `typeName` FROM `type`
-")->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT `typeName` FROM `type`";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+    $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Types");
 
     echo "<table class=\"table\">";
@@ -81,8 +87,10 @@ function getAllTypes() {
 }
 
 function getAllAttack() {
-    $resultat = pokedb()->query("SELECT `moveName`, `movePower`, `moveAccuracy` FROM `move`
-")->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT `moveName`, `movePower`, `moveAccuracy` FROM `move`";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+    $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Attaque", "Puissance", "Précision");
 
     echo "<table class=\"table\">";
@@ -110,12 +118,19 @@ $resultat->execute();
 
 function getDescription($id) {
     $resultat = pokedb()->query("SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = $id ;")->fetch();
+    $sql = "SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = $id ;";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+    $resultat = $query->fetch();
 
     return $resultat;
 }
 
 function getAllId() {
-    $resultat = pokedb()->query("SELECT `pokemonId` FROM `pokemon`;")->fetch();
+    $sql = "SELECT `pokemonId` FROM `pokemon`;";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+    $resultat = $query->fetch();
 
     return $resultat;
 }
