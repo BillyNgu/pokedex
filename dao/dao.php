@@ -18,22 +18,28 @@ function getAllPokemon() {
     }
     echo "</thead>";
     echo "<tbody>";
+    $cpt2 = 0;
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
+        $result = getAllId();
         $cpt = 0;
+        $cpt2 ++;
         foreach ($valeur AS $key => $valeur2) {
+
             $cpt++;
 
             switch ($cpt) {
                 case 1:
                     echo "<td>$valeur2</td>";
+                    $id = $valeur2;
                     break;
                 case 2:
                     $imageblob = $valeur2;
                     echo '<td><img height=\'64\' width=\'64\' src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" /></td>';
                     break;
                 case 3:
-                    echo "<td><a href=\"descriptionPkmn.php?pokemonId=\">$valeur2</a></td>";
+
+                    echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$valeur2</a></td>";
                     break;
                 case 4:
                     echo "<td>$pkmnType</td>";
@@ -88,7 +94,19 @@ function getAllAttack() {
 
 function getPokemonType($id) {
     $resultat = pokedb()->query("SELECT `type`.`typeId`, `type`.`typeName`"
-            . "FROM `type`, `composed` WHERE `type`.`typeId` = `composed`.`typeId` AND `composed`.`pokemonId` ='$id'")->fetchAll(PDO::FETCH_ASSOC);
+                    . "FROM `type`, `composed` WHERE `type`.`typeId` = `composed`.`typeId` AND `composed`.`pokemonId` ='$id'")->fetchAll(PDO::FETCH_ASSOC);
+
+    return $resultat;
+}
+
+function getDescription($id) {
+    $resultat = pokedb()->query("SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = $id ;")->fetch();
     
+    return $resultat;
+}
+
+function getAllId() {
+    $resultat = pokedb()->query("SELECT `pokemonId` FROM `pokemon`;")->fetch();
+
     return $resultat;
 }
