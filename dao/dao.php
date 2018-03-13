@@ -29,7 +29,7 @@ function getAllPokemon() {
                     break;
                 case 2:
                     $imageblob = $valeur2;
-                    echo '<td><img height=\"64\" width=\"64\" src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" /></td>';
+                    echo '<td><img height=\'64\' width=\'64\' src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" /></td>';
                     break;
                 case 3:
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=\">$valeur2</a></td>";
