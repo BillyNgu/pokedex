@@ -33,9 +33,8 @@ $result = getDescription($_GET['pokemonId']);
             <p> Numéro national : <?php echo  $result['pokemonId'];?></p>
             <p> Nom : <?php echo $result['pokemonName'];?></p>
             <?php // var_dump($result['pokemonImg']) ?>
-            <p><img height='64' width='64' src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" /></p>
+            <p><img src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" /></p>
             <p> Description : <?php echo $result['pokemonDescription'];?></p>
-
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>

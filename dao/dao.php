@@ -51,10 +51,9 @@ function getAllPokemon() {
                 case 3:
 
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$valeur2</a></td>";
-                    echo "<td>" . $type . "</td>";
-                    break;
-                case 4:
-                    echo "<td>$pkmnType</td>";
+                    echo '<td>';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($type) . '">';
+                    echo '</td>';
                     break;
                 default:
                     break;
