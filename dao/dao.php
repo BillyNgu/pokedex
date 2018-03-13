@@ -8,7 +8,7 @@ function getAllPokemon() {
     $resultat = pokedb()->query("SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
-    $pkmnType = getType($resultat['pokemonId']);
+    //$pkmnType = getType($resultat['pokemonId']);
 
     echo "<table class=\"table\">";
     echo "<thead class=\"table thead\">";
@@ -101,7 +101,7 @@ function getPokemonType($id) {
 
 function getDescription($id) {
     $resultat = pokedb()->query("SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = $id ;")->fetch();
-    
+
     return $resultat;
 }
 
