@@ -116,6 +116,14 @@ function getPokemonType($id) {
     return $query;
 }
 
+function getAttackType($id) {
+    $sql = "SELECT `typeName` FROM `type`, `move` WHERE `type`.`typeId`=`move`.`typeId` AND `move`.`moveId`='$id'";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+
+    return $query;
+}
+
 function getDescription($id) {
     $sql = "SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = $id ;";
     $query = pokedb()->prepare($sql);
