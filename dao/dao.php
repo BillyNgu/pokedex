@@ -10,12 +10,8 @@ function getAllPokemon() {
     $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
 
-    $pkmnType = getPokemonType(1)->fetchAll();
-    $type="";
-    foreach ($pkmnType as $key => $value) {
-       $type.=$value["typeName"]. " ";
-    }
-    
+
+
     echo "<table class=\"table\">";
     echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $valeur) {
@@ -38,6 +34,11 @@ function getAllPokemon() {
                 case 1:
                     echo "<td>$valeur2</td>";
                     $id = $valeur2;
+                    $pkmnType = getPokemonType($id)->fetchAll();
+                    $type = "";
+                    foreach ($pkmnType as $key => $value) {
+                        $type .= $value["typeName"] . " ";
+                    }
                     break;
                 case 2:
                     $imageblob = $valeur2;
@@ -50,7 +51,7 @@ function getAllPokemon() {
                 case 3:
 
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$valeur2</a></td>";
-                    echo "<td>".$type."</td>";
+                    echo "<td>" . $type . "</td>";
                     break;
                 case 4:
                     echo "<td>$pkmnType</td>";
