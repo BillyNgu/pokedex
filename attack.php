@@ -22,8 +22,8 @@ require_once './dao/dao.php';
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="index.php">Index</a>
-                        <a class="nav-item nav-link" href="#">Liste des attaques<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="index.php">Index</a>
+                        <a class="nav-item nav-link active" href="#">Liste des attaques<span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="types.php">Liste des types</a>
                     </div>
                 </div>
