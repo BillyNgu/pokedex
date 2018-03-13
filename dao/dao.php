@@ -10,6 +10,12 @@ function getAllPokemon() {
     $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
 
+    $pkmnType = getPokemonType(1)->fetchAll();
+    $type="";
+    foreach ($pkmnType as $key => $value) {
+       $type.=$value["typeName"]. " ";
+    }
+    
     echo "<table class=\"table\">";
     echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $valeur) {
@@ -44,6 +50,7 @@ function getAllPokemon() {
                 case 3:
 
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$valeur2</a></td>";
+                    echo "<td>".$type."</td>";
                     break;
                 case 4:
                     echo "<td>$pkmnType</td>";
@@ -105,9 +112,8 @@ function getPokemonType($id) {
             . "FROM `type`, `composed` WHERE `type`.`typeId` = `composed`.`typeId` AND `composed`.`pokemonId` ='$id'";
     $query = pokedb()->prepare($sql);
     $query->execute();
-    $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    return $resultat;
+    return $query;
 }
 
 function getDescription($id) {
