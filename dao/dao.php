@@ -4,10 +4,11 @@ require_once './dao/mySql.inc.php';
 require_once './dao/connectionBase.php';
 
 function getAllPokemon() {
-    
+
     $resultat = pokedb()->query("SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`
 ")->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
+    $pkmnType = getType($resultat['pokemonId']);
 
     echo "<table class=\"table\">";
     echo "<thead class=\"table thead\">";
@@ -22,7 +23,7 @@ function getAllPokemon() {
         $cpt = 0;
         foreach ($valeur AS $key => $valeur2) {
             $cpt++;
-                        
+
             switch ($cpt) {
                 case 1:
                     echo "<td>$valeur2</td>";
@@ -35,11 +36,11 @@ function getAllPokemon() {
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=\">$valeur2</a></td>";
                     break;
                 case 4:
-                    echo "<td></td>";
+                    echo "<td>$pkmnType</td>";
                     break;
                 default:
                     break;
-            }        
+            }
         }
         echo "</tr>";
     }
@@ -85,16 +86,9 @@ function getAllAttack() {
     echo "</table>";
 }
 
-//function getType($id) {
-//
-//    $idTypes = pokedb()->query("SELECT `typeId` FROM `istype` WHERE `pokemonId` = $id ;");
-//    echo $idTypes;
-//    if ($id)
-//        foreach ($idTypes as $key => $value) {
-//            $idTypes += pokedb()->query("SELECT `typeName` FROM `type` WHERE `typeId` =$value ") .
-//                    "SELECT distinct t.typeName FROM istype as i, type as t, pokemon as p WHERE t.typeId = i.typeId AND i.pokemonId = '1'";
-//        }
-
-function getDescription() {
+function getPokemonType($id) {
+    $resultat = pokedb()->query("SELECT `type`.`typeId`, `type`.`typeName`"
+            . "FROM `type`, `composed` WHERE `type`.`typeId` = `composed`.`typeId` AND `composed`.`pokemonId` ='$id'")->fetchAll(PDO::FETCH_ASSOC);
     
+    return $resultat;
 }
