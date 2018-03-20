@@ -40,7 +40,7 @@ function getAllPokemon() {
                     break;
                 case 2:
                     $imageblob = $value2;
-                    echo '<td>'
+                    echo '<td class=\"tab-content\">'
                     . '<a href="descriptionPkmn.php?pokemonId=' . $id . '">'
                     . '<img height=\'64\' width=\'64\' src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" />'
                     . '</a>'
