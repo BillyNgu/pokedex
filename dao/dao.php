@@ -10,8 +10,6 @@ function getAllPokemon() {
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
 
-
-
     echo "<table class=\"table table-striped\">";
     echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $value) {
@@ -27,7 +25,6 @@ function getAllPokemon() {
         $cpt = 0;
         $cpt2 ++;
         foreach ($value AS $key => $value2) {
-
             $cpt++;
 
             switch ($cpt) {
@@ -36,8 +33,8 @@ function getAllPokemon() {
                     $id = $value2;
                     $type = "";
                     $pkmnType = getPokemonType($id);
-
                     break;
+                
                 case 2:
                     $imageblob = $value2;
                     echo '<td class=\"tab-content\">'
@@ -46,8 +43,8 @@ function getAllPokemon() {
                     . '</a>'
                     . '</td>';
                     break;
+                
                 case 3:
-
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$value2</a></td>";
                     echo '<td>';
                     foreach ($pkmnType as $key => $value) {
@@ -95,10 +92,7 @@ function getAllAttack() {
     $query = pokedb()->prepare($sql);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
     $cpt = 0;
-
     $nomColl = array("Attaque", "Puissance", "Précision", "Type");
 
     echo "<table class=\"table table-striped\">";
