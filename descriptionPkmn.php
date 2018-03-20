@@ -34,7 +34,11 @@ $pkmtype = getPokemonType($result['pokemonId']);
                 </div>
             </nav>
             <div class="container">
-                <img class="img-fluid float-left" src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" />
+                <div class="card float-left" style="width: 18rem;">
+                    <div class="card-body">
+                        <img class="img-fluid" src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" />
+                    </div>
+                </div>
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $result['pokemonName']; ?></h5>
