@@ -81,7 +81,7 @@ function getAllTypes() {
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
         foreach ($valeur AS $key => $valeur2) {
-            echo "<td>$valeur2</td>";
+            echo '<td><img src="data:image/jpeg;base64,' . base64_encode($valeur2) . '"></td>';
         }
         echo "</tr>";
     }
