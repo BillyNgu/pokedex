@@ -34,7 +34,7 @@ function getAllPokemon() {
                     $type = "";
                     $pkmnType = getPokemonType($id);
                     break;
-                
+
                 case 2:
                     $imageblob = $value2;
                     echo '<td class=\"tab-content\">'
@@ -43,7 +43,7 @@ function getAllPokemon() {
                     . '</a>'
                     . '</td>';
                     break;
-                
+
                 case 3:
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$value2</a></td>";
                     echo '<td>';
@@ -107,15 +107,23 @@ function getAllAttack() {
         foreach ($value AS $key => $value2) {
             $cpt++;
 
-            if ($cpt == 4) {
-                $sql2 = "SELECT typeName FROM type WHERE typeId = $value2";
-                $query2 = pokedb()->prepare($sql2);
-                $query2->execute();
-                $type = $query2->fetch()[0];
+            switch ($cpt) {
+                case 1:
+                    echo "<td><a href=\"#\">$value2</a></td>";
+                    break;
+                
+                case 4:
+                    $sql2 = "SELECT `typeName` FROM `type` WHERE `typeId` = $value2";
+                    $query2 = pokedb()->prepare($sql2);
+                    $query2->execute();
+                    $type = $query2->fetch()[0];
 
-                echo '<td><img src="data:image/jpeg;base64,' . base64_encode($type) . '"></td>';
-            } else {
-                echo "<td>$value2</td>";
+                    echo '<td><img src="data:image/jpeg;base64,' . base64_encode($type) . '"></td>';
+                    break;
+
+                default:
+                    echo "<td>$value2</td>";
+                    break;
             }
         }
         echo "</tr>";
