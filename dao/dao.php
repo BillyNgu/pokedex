@@ -34,11 +34,9 @@ function getAllPokemon() {
                 case 1:
                     echo "<td>$valeur2</td>";
                     $id = $valeur2;
-                    $pkmnType = getPokemonType($id)->fetchAll();
                     $type = "";
-                    foreach ($pkmnType as $key => $value) {
-                        $type .= $value["typeName"] . " ";
-                    }
+                    $pkmnType = getPokemonType($id)->fetchAll();
+
                     break;
                 case 2:
                     $imageblob = $valeur2;
@@ -52,9 +50,13 @@ function getAllPokemon() {
 
                     echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$valeur2</a></td>";
                     echo '<td>';
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($type) . '">';
+                    foreach ($pkmnType as $key => $value) {
+                        $type = $value["typeName"];
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($type) . '">';
+                    }
                     echo '</td>';
                     break;
+
                 default:
                     break;
             }
