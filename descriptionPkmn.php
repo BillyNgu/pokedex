@@ -1,19 +1,22 @@
-
-<!DOCTYPE html>
 <?php
 /*
  * Authors : Dubas Loïc, Pighini Lucas, Nguyen Billy
- * Description : List of all Pokemon
+ * Description : description of selected pokemon.
  * Date : 20.02.18
  */
 require_once './dao/dao.php';
 $result = getDescription($_GET['pokemonId']);
+$pkmtype = getPokemonType($result['pokemonId']);
+//var_dump($pkmtype);
 ?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Pokédex</title>
         <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery-migrate-1.2.1.min.js"></script>
     </head>
     <body class="body">
         <div class="container">
@@ -30,11 +33,22 @@ $result = getDescription($_GET['pokemonId']);
                     </div>
                 </div>
             </nav>
-            <p> Numéro national : <?php echo  $result['pokemonId'];?></p>
-            <p> Nom : <?php echo $result['pokemonName'];?></p>
-            <?php // var_dump($result['pokemonImg']) ?>
-            <p><img src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" /></p>
-            <p> Description : <?php echo $result['pokemonDescription'];?></p>
+            <div class="container">
+                <img class="img-fluid float-left" src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" />
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $result['pokemonName']; ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Numéro national : <?php echo $result['pokemonId']; ?></h6>
+                        <h6> Type : <?php
+                            foreach ($pkmtype as $key => $value) {
+                                echo '<img src="data:image/jpeg;base64,' . base64_encode($value['typeName']) . '">';
+                            }
+                            ?> </h6>
+
+                        <p> <h5>Description : </h5><?php echo $result['pokemonDescription']; ?></p>        
+                    </div>
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>
