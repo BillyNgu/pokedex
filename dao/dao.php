@@ -89,11 +89,15 @@ function getAllTypes() {
 }
 
 function getAllAttack() {
-    $sql = "SELECT `moveName`, `movePower`, `moveAccuracy` FROM `move`";
+    $sql = "SELECT `moveName`, `movePower`, `moveAccuracy`, `typeId` FROM `move`";
     $query = pokedb()->prepare($sql);
     $query->execute();
     $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
-    $nomColl = array("Attaque", "Puissance", "Précision");
+
+
+    $cpt = 0;
+
+    $nomColl = array("Attaque", "Puissance", "Précision", "Type");
 
     echo "<table class=\"table\">";
     foreach ($nomColl AS $key => $valeur) {
@@ -101,8 +105,20 @@ function getAllAttack() {
     }
     foreach ($resultat AS $key => $valeur) {
         echo "<tr>";
+        $cpt = 0;
         foreach ($valeur AS $key => $valeur2) {
-            echo "<td>$valeur2</td>";
+            $cpt++;
+
+            if ($cpt == 4) {
+                $sql2 = "SELECT typeName FROM type WHERE typeId = $valeur2";
+                $query2 = pokedb()->prepare($sql2);
+                $query2->execute();
+                $type = $query2->fetch()[0];
+                
+                echo '<td><img src="data:image/jpeg;base64,' . base64_encode($type) . '"></td>';
+            } else {
+                echo "<td>$valeur2</td>";
+            }
         }
         echo "</tr>";
     }
