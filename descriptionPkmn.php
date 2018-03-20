@@ -36,7 +36,7 @@ $pkmtype = getPokemonType($result['pokemonId']);
             <div class="card-group">
                 <div class="card col-4" style="width: 18rem;">
                     <div class="card-body">
-                        <img class="img-fluid" src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" />
+                        <img class="card-img" src="data:image/jpeg;base64, <?php echo base64_encode($result['pokemonImg']); ?>" />
                     </div>
                 </div>
                 <div class="card w-75" style="width: 18rem;">
@@ -48,7 +48,8 @@ $pkmtype = getPokemonType($result['pokemonId']);
                                 echo '<img src="data:image/jpeg;base64,' . base64_encode($value['typeName']) . '">';
                             }
                             ?> </h6>
-                        <h5>Description : </h5><?php echo $result['pokemonDescription']; ?>     
+                        <h5>Description : </h5><?php echo $result['pokemonDescription']; ?>
+                        
                     </div>
                 </div>
             </div>
