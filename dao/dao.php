@@ -12,7 +12,7 @@ function getAllPokemon() {
 
 
 
-    echo "<table class=\"table\">";
+    echo "<table class=\"table table-striped\">";
     echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $value) {
 
@@ -74,10 +74,12 @@ function getAllTypes() {
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Types");
 
-    echo "<table class=\"table\">";
+    echo "<table class=\"table table-striped\">";
+    echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $value) {
         echo "<th>$value</th>";
     }
+    echo "</thead>";
     foreach ($result AS $key => $value) {
         echo "<tr>";
         foreach ($value AS $key => $value2) {
@@ -99,10 +101,12 @@ function getAllAttack() {
 
     $nomColl = array("Attaque", "Puissance", "Précision", "Type");
 
-    echo "<table class=\"table\">";
+    echo "<table class=\"table table-striped\">";
+    echo "<thead class=\"table thead\">";
     foreach ($nomColl AS $key => $value) {
         echo "<th>$value</th>";
     }
+    echo "</thead>";
     foreach ($result AS $key => $value) {
         echo "<tr>";
         $cpt = 0;
@@ -114,7 +118,7 @@ function getAllAttack() {
                 $query2 = pokedb()->prepare($sql2);
                 $query2->execute();
                 $type = $query2->fetch()[0];
-                
+
                 echo '<td><img src="data:image/jpeg;base64,' . base64_encode($type) . '"></td>';
             } else {
                 echo "<td>$value2</td>";
