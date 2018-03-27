@@ -5,8 +5,8 @@
  * Date : 20.02.18
  */
 require_once './dao/dao.php';
-$result = getDescription($_GET['pokemonId']);
-$pkmtype = getPokemonType($result['pokemonId']);
+$pokemonDescription = getDescription(filter_input(INPUT_GET, 'pokemonId', FILTER_VALIDATE_INT));
+$pkmtype = getPokemonType($pokemonDescription['pokemonId']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,18 +35,18 @@ $pkmtype = getPokemonType($result['pokemonId']);
             <div class="card-group">
                 <div class="card col-4" style="width: 18rem;">
                     <div class="card-body">
-                        <img class="card-img" src="data:image/jpeg;base64, <?= base64_encode($result['pokemonImg']); ?>" />
+                        <img class="card-img" src="data:image/jpeg;base64, <?= base64_encode($pokemonDescription['pokemonImg']); ?>" />
                     </div>
                 </div>
                 <div class="card w-75" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $result['pokemonName']; ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Numéro national : <?= $result['pokemonId']; ?></h6>
+                        <h5 class="card-title"><?= $pokemonDescription['pokemonName']; ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Numéro national : <?= $pokemonDescription['pokemonId']; ?></h6>
                         <h6> Type : <?php foreach ($pkmtype as $key => $value): ?> 
                                 <img src="data:image/jpeg;base64,<?= base64_encode($value['typeName']) ?>">
                             <?php endforeach; ?>
                         </h6>
-                        <h5>Description : </h5><?= $result['pokemonDescription']; ?>
+                        <h5>Description : </h5><?= $pokemonDescription['pokemonDescription']; ?>
                     </div>
                 </div>
             </div>
