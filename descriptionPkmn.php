@@ -47,7 +47,6 @@ $pkmtype = getPokemonType($result['pokemonId']);
                             <?php endforeach; ?>
                         </h6>
                         <h5>Description : </h5><?= $result['pokemonDescription']; ?>
-
                     </div>
                 </div>
             </div>

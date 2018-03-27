@@ -4,7 +4,11 @@
  * Description : List of all types
  * Date : 06.03.18
  */
+
 require_once './dao/dao.php';
+
+$nomColl = array("Types");
+$allTypes = getAllTypes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +34,20 @@ require_once './dao/dao.php';
                     </div>
                 </div>
             </nav>
-            <?php getAllTypes(); ?>
+            <table class="table table-striped">
+                <thead class="table thead">
+                    <?php foreach ($nomColl AS $key => $value): ?>
+                    <th><?= $value; ?></th>
+                <?php endforeach; ?>
+                </thead>
+                <?php foreach ($allTypes AS $key => $value): ?>
+                    <tr>
+                        <?php foreach ($value AS $key => $value2): ?>
+                            <td><img src="data:image/jpeg;base64,<?= base64_encode($value2); ?>"></td>
+                        <?php endforeach; ?>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>

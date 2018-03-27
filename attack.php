@@ -4,7 +4,12 @@
  * Description : List of all attacks
  * Date : 20.02.18
  */
+
 require_once './dao/dao.php';
+
+$cpt = 0;
+$nomColl = array("Attaque", "Puissance", "Précision", "Type");
+$allAttacks = getAllAttack();
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +35,41 @@ require_once './dao/dao.php';
                     </div>
                 </div>
             </nav>
-            <?php getAllAttack(); ?>
+            <table class="table table-striped">
+                <thead class="table thead">
+                    <?php foreach ($nomColl AS $key => $value): ?>
+                    <th><?= $value; ?></th>
+                <?php endforeach; ?>
+                </thead>
+                <?php foreach ($allAttacks AS $key => $value): ?>
+                    <tr>
+                        <?php
+                        $cpt = 0;
+                        foreach ($value AS $key => $value2):
+                            $cpt++;
+                            switch ($cpt):
+                                case 1:
+                                    ?>
+                                    <td><a href="#"><?= $value2; ?></a></td>
+                                    <?php
+                                    break;
+                                case 4:
+                                    $type = getTypeById($value2);
+                                    ?>
+                                    <td><img src="data:image/jpeg;base64,<?= base64_encode($type); ?>"></td>
+                                    <?php
+                                    break;
+                                default:
+                                    ?>
+                                    <td><?= $value2; ?></td>
+                                    <?php
+                                    break;
+                            endswitch;
+                        endforeach;
+                        ?>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>
