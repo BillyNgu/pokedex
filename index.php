@@ -37,7 +37,7 @@ $allPokemon = getAllPokemon();
             <table class="table table-striped">
                 <thead class="table thead">
                     <?php foreach ($nomColl AS $key => $value): ?>
-                    <th><?= $value; ?></th>
+                    <th><?= $value ?></th>
                 <?php endforeach; ?>
                 </thead>
                 <tbody>
@@ -47,7 +47,6 @@ $allPokemon = getAllPokemon();
                         ?> 
                         <tr>
                             <?php
-                            $result = getAllId();
                             $cpt = 0;
                             $cpt2 ++;
                             foreach ($value AS $key => $value2):
