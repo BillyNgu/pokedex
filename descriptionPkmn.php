@@ -4,6 +4,7 @@
  * Description : description of selected pokemon.
  * Date : 20.02.18
  */
+
 require_once './dao/dao.php';
 $pokemonDescription = getDescription(filter_input(INPUT_GET, 'pokemonId', FILTER_VALIDATE_INT));
 $pkmtype = getPokemonType($pokemonDescription['pokemonId']);

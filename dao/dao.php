@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Authors : Dubas Loïc, Pighini Lucas, Nguyen Billy
+ * Description : Functions
+ * Date : 20.02.18
+ */
+
 require_once './dao/mySql.inc.php';
 require_once './dao/connectionBase.php';
 
