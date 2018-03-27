@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 20 mars 2018 à 11:22
+-- Généré le :  mar. 27 mars 2018 à 10:34
 -- Version du serveur :  5.7.17
--- Version de PHP :  5.6.30
+-- Version de PHP :  7.1.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,6 +30,7 @@ USE `pokedexdb`;
 -- Structure de la table `composed`
 --
 
+DROP TABLE IF EXISTS `composed`;
 CREATE TABLE `composed` (
   `pokemonId` int(11) NOT NULL,
   `typeId` int(11) NOT NULL
@@ -61,6 +62,7 @@ INSERT INTO `composed` (`pokemonId`, `typeId`) VALUES
 -- Structure de la table `hasattack`
 --
 
+DROP TABLE IF EXISTS `hasattack`;
 CREATE TABLE `hasattack` (
   `pokemonId` int(11) NOT NULL,
   `moveId` int(11) NOT NULL
@@ -72,6 +74,7 @@ CREATE TABLE `hasattack` (
 -- Structure de la table `ispartof`
 --
 
+DROP TABLE IF EXISTS `ispartof`;
 CREATE TABLE `ispartof` (
   `pokemonId` int(11) NOT NULL,
   `teamId` int(11) NOT NULL
@@ -83,6 +86,7 @@ CREATE TABLE `ispartof` (
 -- Structure de la table `move`
 --
 
+DROP TABLE IF EXISTS `move`;
 CREATE TABLE `move` (
   `moveId` int(11) NOT NULL,
   `moveName` varchar(25) DEFAULT NULL,
@@ -121,6 +125,7 @@ INSERT INTO `move` (`moveId`, `moveName`, `movePower`, `moveAccuracy`, `typeId`)
 -- Structure de la table `pokemon`
 --
 
+DROP TABLE IF EXISTS `pokemon`;
 CREATE TABLE `pokemon` (
   `pokemonId` int(11) NOT NULL,
   `pokemonName` varchar(50) DEFAULT NULL,
@@ -160,6 +165,7 @@ INSERT INTO `pokemon` (`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemo
 -- Structure de la table `team`
 --
 
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
   `teamId` int(11) NOT NULL,
   `teamName` varchar(50) DEFAULT NULL
@@ -171,6 +177,7 @@ CREATE TABLE `team` (
 -- Structure de la table `type`
 --
 
+DROP TABLE IF EXISTS `type`;
 CREATE TABLE `type` (
   `typeId` int(11) NOT NULL,
   `typeName` blob
@@ -206,6 +213,7 @@ INSERT INTO `type` (`typeId`, `typeName`) VALUES
 -- Structure de la table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL,
   `userName` varchar(50) DEFAULT NULL,
