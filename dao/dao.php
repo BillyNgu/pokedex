@@ -38,7 +38,7 @@ function getAllAttack() {
 
 /**
  * Get a type by its id
- * @param int $idType the type id
+ * @param int $idType The type id
  * @return string
  */
 function getTypeById($idType) {
@@ -65,7 +65,7 @@ function getPokemonType($idPokemon) {
 
 /**
  * Get all types of attacks
- * @param int $idMove
+ * @param int $idMove The move Id
  * @return array
  */
 function getAttackType($idMove) {
@@ -78,7 +78,7 @@ function getAttackType($idMove) {
 
 /**
  * Get description of a Pokemon
- * @param int $idPokemon
+ * @param int $idPokemon The Pokemon id
  * @return array
  */
 function getDescription($idPokemon) {
