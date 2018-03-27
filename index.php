@@ -13,6 +13,8 @@ require_once './dao/dao.php';
         <meta charset="UTF-8">
         <title>Pokédex</title>
         <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery-migrate-1.2.1.min.js"></script>
     </head>
     <body class="body">
         <div class="container">

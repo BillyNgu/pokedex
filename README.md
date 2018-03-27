@@ -1,0 +1,3 @@
+# pokedex
+
+Pokedex project.

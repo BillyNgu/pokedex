@@ -4,57 +4,56 @@ require_once './dao/mySql.inc.php';
 require_once './dao/connectionBase.php';
 
 function getAllPokemon() {
-    $sql = "SELECT `pokemonId`, `pokemonImg`, `pokemonName`  FROM `pokemon`";
+    $sql = "SELECT `pokemonId`, `pokemonSprite`, `pokemonName`  FROM `pokemon`";
     $query = pokedb()->prepare($sql);
     $query->execute();
-    $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("#", "Image", "Nom", "Type");
 
-
-
-    echo "<table class=\"table\">";
+    echo "<table class=\"table table-striped\">";
     echo "<thead class=\"table thead\">";
-    foreach ($nomColl AS $key => $valeur) {
+    foreach ($nomColl AS $key => $value) {
 
-        echo "<th>$valeur</th>";
+        echo "<th>$value</th>";
     }
     echo "</thead>";
     echo "<tbody>";
     $cpt2 = 0;
-    foreach ($resultat AS $key => $valeur) {
+    foreach ($result AS $key => $value) {
         echo "<tr>";
         $result = getAllId();
         $cpt = 0;
         $cpt2 ++;
-        foreach ($valeur AS $key => $valeur2) {
-
+        foreach ($value AS $key => $value2) {
             $cpt++;
 
             switch ($cpt) {
                 case 1:
-                    echo "<td>$valeur2</td>";
-                    $id = $valeur2;
-                    $pkmnType = getPokemonType($id)->fetchAll();
+                    echo "<td>$value2</td>";
+                    $id = $value2;
                     $type = "";
-                    foreach ($pkmnType as $key => $value) {
-                        $type .= $value["typeName"] . " ";
-                    }
+                    $pkmnType = getPokemonType($id);
                     break;
+
                 case 2:
-                    $imageblob = $valeur2;
-                    echo '<td>'
+                    $imageblob = $value2;
+                    echo '<td class=\"tab-content\">'
                     . '<a href="descriptionPkmn.php?pokemonId=' . $id . '">'
-                    . '<img height=\'64\' width=\'64\' src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" />'
+                    . '<img src="data:image/jpeg;base64,' . base64_encode($imageblob) . '" />'
                     . '</a>'
                     . '</td>';
                     break;
-                case 3:
 
-                    echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$valeur2</a></td>";
+                case 3:
+                    echo "<td><a href=\"descriptionPkmn.php?pokemonId=$id\">$value2</a></td>";
                     echo '<td>';
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($type) . '">';
+                    foreach ($pkmnType as $key => $value) {
+                        $type = $value["typeName"];
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($type) . '">';
+                    }
                     echo '</td>';
                     break;
+
                 default:
                     break;
             }
@@ -69,17 +68,19 @@ function getAllTypes() {
     $sql = "SELECT `typeName` FROM `type`";
     $query = pokedb()->prepare($sql);
     $query->execute();
-    $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $nomColl = array("Types");
 
-    echo "<table class=\"table\">";
-    foreach ($nomColl AS $key => $valeur) {
-        echo "<th>$valeur</th>";
+    echo "<table class=\"table table-striped\">";
+    echo "<thead class=\"table thead\">";
+    foreach ($nomColl AS $key => $value) {
+        echo "<th>$value</th>";
     }
-    foreach ($resultat AS $key => $valeur) {
+    echo "</thead>";
+    foreach ($result AS $key => $value) {
         echo "<tr>";
-        foreach ($valeur AS $key => $valeur2) {
-            echo "<td>$valeur2</td>";
+        foreach ($value AS $key => $value2) {
+            echo '<td><img src="data:image/jpeg;base64,' . base64_encode($value2) . '"></td>';
         }
         echo "</tr>";
     }
@@ -87,20 +88,43 @@ function getAllTypes() {
 }
 
 function getAllAttack() {
-    $sql = "SELECT `moveName`, `movePower`, `moveAccuracy` FROM `move`";
+    $sql = "SELECT `moveName`, `movePower`, `moveAccuracy`, `typeId` FROM `move`";
     $query = pokedb()->prepare($sql);
     $query->execute();
-    $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
-    $nomColl = array("Attaque", "Puissance", "Précision");
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $cpt = 0;
+    $nomColl = array("Attaque", "Puissance", "Précision", "Type");
 
-    echo "<table class=\"table\">";
-    foreach ($nomColl AS $key => $valeur) {
-        echo "<th>$valeur</th>";
+    echo "<table class=\"table table-striped\">";
+    echo "<thead class=\"table thead\">";
+    foreach ($nomColl AS $key => $value) {
+        echo "<th>$value</th>";
     }
-    foreach ($resultat AS $key => $valeur) {
+    echo "</thead>";
+    foreach ($result AS $key => $value) {
         echo "<tr>";
-        foreach ($valeur AS $key => $valeur2) {
-            echo "<td>$valeur2</td>";
+        $cpt = 0;
+        foreach ($value AS $key => $value2) {
+            $cpt++;
+
+            switch ($cpt) {
+                case 1:
+                    echo "<td><a href=\"#\">$value2</a></td>";
+                    break;
+                
+                case 4:
+                    $sql2 = "SELECT `typeName` FROM `type` WHERE `typeId` = $value2";
+                    $query2 = pokedb()->prepare($sql2);
+                    $query2->execute();
+                    $type = $query2->fetch()[0];
+
+                    echo '<td><img src="data:image/jpeg;base64,' . base64_encode($type) . '"></td>';
+                    break;
+
+                default:
+                    echo "<td>$value2</td>";
+                    break;
+            }
         }
         echo "</tr>";
     }
@@ -113,7 +137,7 @@ function getPokemonType($id) {
     $query = pokedb()->prepare($sql);
     $query->execute();
 
-    return $query;
+    return $query->fetchAll();
 }
 
 function getAttackType($id) {
@@ -121,23 +145,23 @@ function getAttackType($id) {
     $query = pokedb()->prepare($sql);
     $query->execute();
 
-    return $query;
+    return $query->fetchAll();
 }
 
 function getDescription($id) {
     $sql = "SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = $id ;";
     $query = pokedb()->prepare($sql);
     $query->execute();
-    $resultat = $query->fetch();
+    $result = $query->fetch();
 
-    return $resultat;
+    return $result;
 }
 
 function getAllId() {
     $sql = "SELECT `pokemonId` FROM `pokemon`;";
     $query = pokedb()->prepare($sql);
     $query->execute();
-    $resultat = $query->fetch();
+    $result = $query->fetch();
 
-    return $resultat;
+    return $result;
 }
