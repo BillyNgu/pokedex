@@ -7,7 +7,6 @@
 require_once './dao/dao.php';
 $result = getDescription($_GET['pokemonId']);
 $pkmtype = getPokemonType($result['pokemonId']);
-//var_dump($pkmtype);
 ?>
 <!DOCTYPE html>
 <html>
