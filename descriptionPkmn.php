@@ -44,7 +44,7 @@ $pkmtype = getPokemonType($pokemonDescription['pokemonId']);
                         <h5 class="card-title"><?= $pokemonDescription['pokemonName']; ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Numéro national : <?= $pokemonDescription['pokemonId']; ?></h6>
                         <h6> Type : <?php foreach ($pkmtype as $key => $value): ?> 
-                                <img src="data:image/jpeg;base64,<?= base64_encode($value['typeName']) ?>">
+                                <img src="data:image/jpeg;base64,<?= base64_encode($value['typeImage']); ?>">
                             <?php endforeach; ?>
                         </h6>
                         <h5>Description : </h5><?= $pokemonDescription['pokemonDescription']; ?>

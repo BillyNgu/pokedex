@@ -25,7 +25,7 @@ function getAllPokemon() {
  * @return array
  */
 function getAllTypes() {
-    $sql = "SELECT `typeName` FROM `type`";
+    $sql = "SELECT `typeImage` FROM `type` ORDER BY `typeName` ASC";
     $query = pokedb()->prepare($sql);
     $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -48,7 +48,7 @@ function getAllAttack() {
  * @return string
  */
 function getTypeById($idType) {
-    $sql = "SELECT `typeName` FROM `type` WHERE `typeId` = :idType";
+    $sql = "SELECT `typeImage` FROM `type` WHERE `typeId` = :idType";
     $query = pokedb()->prepare($sql);
     $query->bindParam(':idType', $idType, PDO::PARAM_INT);
     $query->execute();
@@ -61,7 +61,7 @@ function getTypeById($idType) {
  * @return array
  */
 function getPokemonType($idPokemon) {
-    $sql = "SELECT `type`.`typeId`, `type`.`typeName`"
+    $sql = "SELECT `type`.`typeId`, `type`.`typeImage`"
             . "FROM `type`, `composed` WHERE `type`.`typeId` = `composed`.`typeId` AND `composed`.`pokemonId` = :idPokemon";
     $query = pokedb()->prepare($sql);
     $query->bindParam(':idPokemon', $idPokemon, PDO::PARAM_INT);
@@ -75,7 +75,7 @@ function getPokemonType($idPokemon) {
  * @return array
  */
 function getAttackType($idMove) {
-    $sql = "SELECT `typeName` FROM `type`, `move` WHERE `type`.`typeId`=`move`.`typeId` AND `move`.`moveId`= :idMove";
+    $sql = "SELECT `typeImage` FROM `type`, `move` WHERE `type`.`typeId`=`move`.`typeId` AND `move`.`moveId`= :idMove";
     $query = pokedb()->prepare($sql);
     $query->bindParam(':idMove', $idMove, PDO::PARAM_INT);
     $query->execute();

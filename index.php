@@ -49,7 +49,7 @@ $allPokemon = getAllPokemon();
                             <?php
                             $cpt = 0;
                             $cpt2 ++;
-                            foreach ($value AS $key => $value2):
+                            foreach ($value AS $key => $value2): 
                                 $cpt++;
 
                                 switch ($cpt):
@@ -77,13 +77,13 @@ $allPokemon = getAllPokemon();
                                         <td>
                                             <?php
                                             foreach ($pkmnType as $key => $value):
-                                                $type = $value["typeName"];
+                                                $type = $value["typeImage"];
                                                 ?>
                                                 <img src="data:image/jpeg;base64,<?= base64_encode($type); ?>">
                                             <?php endforeach; ?>
                                         </td> <?php
                                         break;
-                                    default:
+                                    default: 
                                         break;
                                         ?>
                                 <?php endswitch;
