@@ -7,7 +7,7 @@
 
 require_once './dao/dao.php';
 
-$nomColl = array("Types");
+$nomColl = array("Types", "Nom");
 $allTypes = getAllTypes();
 ?>
 <!DOCTYPE html>
@@ -31,6 +31,8 @@ $allTypes = getAllTypes();
                         <a class="nav-item nav-link" href="index.php">Index</a>
                         <a class="nav-item nav-link" href="attacks.php">Liste des attaques</a>
                         <a class="nav-item nav-link active" href="#">Liste des types<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#">Inscription</a>
+                        <a class="nav-item nav-link" href="#">Connexion</a>
                     </div>
                 </div>
             </nav>
@@ -42,8 +44,28 @@ $allTypes = getAllTypes();
                 </thead>
                 <?php foreach ($allTypes AS $key => $value): ?>
                     <tr>
-                        <?php foreach ($value AS $key => $value2): ?>
-                            <td><img src="data:image/jpeg;base64,<?= base64_encode($value2); ?>"></td>
+                        <?php
+                        $cpt = 0;
+                        foreach ($value AS $key => $value2):
+                            $cpt++;
+                            switch ($cpt):
+                                case 1:
+                                    ?>
+                                    <td>
+                                        <img src="data:image/jpeg;base64,<?= base64_encode($value2); ?>">
+                                    </td>
+                                    <?php
+                                    break;
+                                case 2:
+                                    ?>
+                                    <td>
+                                        <?= $value['typeName']; ?>
+                                    </td>
+                                <?php
+                                default:
+                                    break;
+                            endswitch;
+                            ?>
                         <?php endforeach; ?>
                     </tr>
                 <?php endforeach; ?>

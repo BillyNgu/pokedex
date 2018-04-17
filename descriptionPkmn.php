@@ -30,6 +30,8 @@ $pkmtype = getPokemonType($pokemonDescription['pokemonId']);
                         <a class="nav-item nav-link" href="index.php">Index<span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="attacks.php">Liste des attaques</a>
                         <a class="nav-item nav-link" href="types.php">Liste des types</a>
+                        <a class="nav-item nav-link" href="#">Inscription</a>
+                        <a class="nav-item nav-link" href="#">Connexion</a>
                     </div>
                 </div>
             </nav>

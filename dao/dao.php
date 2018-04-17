@@ -25,7 +25,7 @@ function getAllPokemon() {
  * @return array
  */
 function getAllTypes() {
-    $sql = "SELECT `typeImage` FROM `type` ORDER BY `typeName` ASC";
+    $sql = "SELECT `typeImage`, `typeName` FROM `type` ORDER BY `typeName` ASC";
     $query = pokedb()->prepare($sql);
     $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
