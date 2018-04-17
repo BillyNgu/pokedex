@@ -89,7 +89,7 @@ function getAttackType($idMove) {
  * @return array
  */
 function getDescription($idPokemon) {
-    $sql = "SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg` FROM `pokemon` WHERE `pokemonId` = :idPokemon";
+    $sql = "SELECT`pokemonId`, `pokemonName`, `pokemonDescription`, `pokemonImg`, `pokemonSprite` FROM `pokemon` WHERE `pokemonId` = :idPokemon";
     $query = pokedb()->prepare($sql);
     $query->bindParam(':idPokemon', $idPokemon, PDO::PARAM_INT);
     $query->execute();
