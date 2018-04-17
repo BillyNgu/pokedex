@@ -8,6 +8,7 @@
 
 require_once './dao/mySql.inc.php';
 require_once './dao/connectionBase.php';
+require_once './dao/flashmessage.php';
 
 /**
  * Get the list of all Pokemon
@@ -93,4 +94,15 @@ function getDescription($idPokemon) {
     $query->bindParam(':idPokemon', $idPokemon, PDO::PARAM_INT);
     $query->execute();
     return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+function CreateUser($Nickname, $Email, $Pwd, $Date) {
+    $sql = "INSERT INTO `user`(`nickname`, `email`, `password`, `salt`)" .
+            "SELECT :Nickname, :Email, :Password, SHA1(NOW())";
+    $query = pokedb()->prepare($sql);
+    $query->execute(array(
+        'Nickname' => strtolower($Nickname),
+        'Email' => strtolower($Email),
+        'Password' => sha1("$Pwd" . sha1("$Date"))
+    ));
 }

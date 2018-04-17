@@ -27,14 +27,23 @@ $allPokemon = getAllPokemon();
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Index<span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="attacks.php">Liste des attaques</a>
-                        <a class="nav-item nav-link" href="types.php">Liste des types</a>
-                        <a class="nav-item nav-link" href="#">Inscription</a>
-                        <a class="nav-item nav-link" href="#">Connexion</a>
-                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Index</a>        
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="attacks.php">Liste des attaques</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="types.php">Liste des types</a>
+                        </li>
+                    </ul>
                 </div>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="connection.php">Connexion</a>
+                    </li>
+                </ul>
             </nav>
             <table class="table table-striped">
                 <thead class="table thead">
@@ -51,7 +60,7 @@ $allPokemon = getAllPokemon();
                             <?php
                             $cpt = 0;
                             $cpt2 ++;
-                            foreach ($value AS $key => $value2): 
+                            foreach ($value AS $key => $value2):
                                 $cpt++;
 
                                 switch ($cpt):
@@ -85,7 +94,7 @@ $allPokemon = getAllPokemon();
                                             <?php endforeach; ?>
                                         </td> <?php
                                         break;
-                                    default: 
+                                    default:
                                         break;
                                         ?>
                                 <?php endswitch;
