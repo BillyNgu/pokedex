@@ -44,6 +44,7 @@ $pkmtype = getPokemonType($pokemonDescription['pokemonId']);
                     </li>
                 </ul>
             </nav>
+            
             <div class="card-group">
                 <div class="card col-4" style="width: 18rem;">
                     <div class="card-body">

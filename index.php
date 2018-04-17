@@ -9,6 +9,10 @@ require_once './dao/dao.php';
 
 $nomColl = array("#", "Image", "Nom", "Type");
 $allPokemon = getAllPokemon();
+
+if (!empty($_SESSION['userNickname'])) {
+    $nickname = $_SESSION['userNickname'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,11 +43,25 @@ $allPokemon = getAllPokemon();
                         </li>
                     </ul>
                 </div>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="connection.php">Connexion</a>
-                    </li>
-                </ul>
+                <?php if (!empty($nickname)): ?>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active">Bienvenue <?= $nickname; ?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="logout.php">Déconnexion</a>
+                        </li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="connection.php">Connexion</a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
             </nav>
             <table class="table table-striped">
                 <thead class="table thead">
@@ -93,10 +111,10 @@ $allPokemon = getAllPokemon();
                                                 <img src="data:image/jpeg;base64,<?= base64_encode($type); ?>">
                                             <?php endforeach; ?>
                                         </td> <?php
-                                        break;
-                                    default:
-                                        break;
-                                        ?>
+                                            break;
+                                        default:
+                                            break;
+                                            ?>
                                 <?php endswitch;
                             endforeach;
                             ?>

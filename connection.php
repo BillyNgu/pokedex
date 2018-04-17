@@ -7,8 +7,14 @@
 
 require_once './dao/dao.php';
 
-$nomColl = array("#", "Image", "Nom", "Type");
-$allPokemon = getAllPokemon();
+$message = GetFlashMessage();
+
+if (isset($_POST['connection'])) {
+    $Nickname = trim(filter_input(INPUT_POST, 'Nickname', FILTER_SANITIZE_STRING));
+    $Pwd = filter_input(INPUT_POST, 'Password', FILTER_SANITIZE_STRING);
+
+    CheckLogin(strtolower($Nickname), $Pwd);
+}
 ?>
 <!DOCTYPE html>
 <html>

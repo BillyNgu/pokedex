@@ -97,7 +97,7 @@ function getDescription($idPokemon) {
 }
 
 function CreateUser($Nickname, $Email, $Pwd, $Date) {
-    $sql = "INSERT INTO `user`(`nickname`, `email`, `password`, `salt`)" .
+    $sql = "INSERT INTO `user`(`userNickname`, `userEmail`, `userPassword`, `userSalt`)" .
             "SELECT :Nickname, :Email, :Password, SHA1(NOW())";
     $query = pokedb()->prepare($sql);
     $query->execute(array(
@@ -105,4 +105,33 @@ function CreateUser($Nickname, $Email, $Pwd, $Date) {
         'Email' => strtolower($Email),
         'Password' => sha1("$Pwd" . sha1("$Date"))
     ));
+}
+
+function CheckLogin($Nickname, $Pwd) {
+    $salt = getSaltFromUser($Nickname);
+    $sql = "SELECT `userNickname`, `userPassword` FROM `user` WHERE `userNickname` = :Nickname AND `userPassword` = :Password ";
+    $query = pokedb()->prepare($sql);
+    $Pwd = sha1("$Pwd" . "$salt");
+
+    $query->bindParam(':Nickname', $Nickname, PDO::PARAM_STR);
+    $query->bindParam(':Password', $Pwd, PDO::PARAM_STR);
+    $query->execute();
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    if ($Nickname === $user['userNickname'] && $Pwd === $user['userPassword']) {
+        $_SESSION['userNickname'] = $Nickname;
+//        $_SESSION['idUser'] = $idUser;
+
+        header('Location:index.php');
+    } else {
+        $_SESSION['userNickname'] = "";
+    }
+}
+
+function getSaltFromUser($Nickname) {
+    $sql = "SELECT `userSalt` from `user` WHERE `userNickname` = :Nickname";
+    $query = pokedb()->prepare($sql);
+    $query->bindParam(':Nickname', $Nickname, PDO::PARAM_STR);
+    $query->execute();
+    return $query->fetch()[0];
 }

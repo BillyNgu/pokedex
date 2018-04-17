@@ -7,9 +7,6 @@
 
 require_once './dao/dao.php';
 
-$nomColl = array("#", "Image", "Nom", "Type");
-$allPokemon = getAllPokemon();
-
 if (isset($_POST['register'])) {
     $Nickname = trim(filter_input(INPUT_POST, 'Nickname', FILTER_SANITIZE_STRING));
     $Email = trim(filter_input(INPUT_POST, 'Email', FILTER_VALIDATE_EMAIL));
