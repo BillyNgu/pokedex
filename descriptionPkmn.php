@@ -53,21 +53,27 @@ $pkmtype = getPokemonType($pkmId);
                     <td>
                         <!-- Previous Pokemon -->
                         <?php if ($pokemonDescription['pokemonId'] != 1): ?>
-                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionPrevious['pokemonId']; ?>"><img class="card-img-top" style="width: 32px;" src="data:image/jpeg;base64, <?= base64_encode($pokemonDescriptionPrevious['pokemonSprite']); ?>" /></a>
-                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionPrevious['pokemonId']; ?>">#<?= $pokemonDescriptionPrevious['pokemonId']; ?> - <?= $pokemonDescriptionPrevious['pokemonName']; ?></a>
+                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionPrevious['pokemonId']; ?>">
+                                <img class="card-img-top" style="width: 32px;" src="data:image/jpeg;base64, <?= base64_encode($pokemonDescriptionPrevious['pokemonSprite']); ?>" />
+                            </a>
+                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionPrevious['pokemonId']; ?>">
+                                #<?= $pokemonDescriptionPrevious['pokemonId']; ?> - <?= $pokemonDescriptionPrevious['pokemonName']; ?>
+                            </a>
                         <?php endif; ?>
                     </td>
                     <td>
                         <?= $pokemonDescription['pokemonId']; ?> - <?= $pokemonDescription['pokemonName']; ?>
                     </td>
                     <td>
-                        <?php if ($pokemonDescriptionNext['pokemonId'] != 151): ?>
-                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionNext['pokemonId']; ?>"><img class="card-img-top" style="width: 32px;" src="data:image/jpeg;base64, <?= base64_encode($pokemonDescriptionNext['pokemonSprite']); ?>" /></a>
+                        <?php if ($pokemonDescription['pokemonId'] != 151): ?>
+                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionNext['pokemonId']; ?>">
+                                <img class="card-img-top" style="width: 32px;" src="data:image/jpeg;base64, <?= base64_encode($pokemonDescriptionNext['pokemonSprite']); ?>" />
+                            </a>
+                            <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionNext['pokemonId']; ?>">
+                                #<?= $pokemonDescriptionNext['pokemonId']; ?> - <?= $pokemonDescriptionNext['pokemonName']; ?>
+                            </a>
                         <?php endif; ?>
-                        <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionNext['pokemonId']; ?>">#<?= $pokemonDescriptionNext['pokemonId']; ?> - <?= $pokemonDescriptionNext['pokemonName']; ?></a>
                     </td>
-
-                    <?php //endif; ?>
                 </tr>
             </table>
             <div class="card-group">

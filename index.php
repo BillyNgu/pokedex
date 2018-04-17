@@ -7,7 +7,7 @@
 
 require_once './dao/dao.php';
 
-$nomColl = array("#", "Image", "Nom", "Type");
+$nomColl = array("#", "Sprite", "Nom", "Type");
 $allPokemon = getAllPokemon();
 
 if (!empty($_SESSION['userNickname'])) {
