@@ -43,13 +43,30 @@ if (isset($_POST['connection'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="types.php">Liste des types</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tableau des faiblesses</a>
+                        </li>
                     </ul>
                 </div>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Connexion</a>
-                    </li>
-                </ul>
+                <?php if (!empty($nickname)): ?>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active">Bienvenue <?= $nickname; ?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Déconnexion</a>
+                        </li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Connexion</a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
             </nav>
             <div class="row">
                 <div class="col">

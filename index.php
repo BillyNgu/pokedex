@@ -41,6 +41,9 @@ if (!empty($_SESSION['userNickname'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="types.php">Liste des types</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tableau des faiblesses</a>
+                        </li>
                     </ul>
                 </div>
                 <?php if (!empty($nickname)): ?>
@@ -52,7 +55,7 @@ if (!empty($_SESSION['userNickname'])) {
                             <a class="nav-link active"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="logout.php">Déconnexion</a>
+                            <a class="nav-link" href="logout.php">Déconnexion</a>
                         </li>
                     </ul>
                 <?php else: ?>
@@ -111,11 +114,10 @@ if (!empty($_SESSION['userNickname'])) {
                                                 <img src="data:image/jpeg;base64,<?= base64_encode($type); ?>">
                                             <?php endforeach; ?>
                                         </td> <?php
-                                            break;
-                                        default:
-                                            break;
-                                            ?>
-                                <?php endswitch;
+                                        break;
+                                    default:
+                                        break;
+                                endswitch;
                             endforeach;
                             ?>
                         </tr>

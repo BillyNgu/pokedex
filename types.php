@@ -9,6 +9,10 @@ require_once './dao/dao.php';
 
 $nomColl = array("Types", "Nom");
 $allTypes = getAllTypes();
+
+if (!empty($_SESSION['userNickname'])) {
+    $nickname = $_SESSION['userNickname'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,13 +41,30 @@ $allTypes = getAllTypes();
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Liste des types</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tableau des faiblesses</a>
+                        </li>
                     </ul>
                 </div>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="connection.php">Connexion</a>
-                    </li>
-                </ul>
+                <?php if (!empty($nickname)): ?>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active">Bienvenue <?= $nickname; ?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Déconnexion</a>
+                        </li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="connection.php">Connexion</a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
             </nav>
             <table class="table table-striped">
                 <thead class="table thead">

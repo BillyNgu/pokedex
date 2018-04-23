@@ -12,6 +12,10 @@ $pokemonDescription = getDescription($pkmId);
 $pokemonDescriptionNext = getDescription($pkmId + 1);
 $pokemonDescriptionPrevious = getDescription($pkmId - 1);
 $pkmtype = getPokemonType($pkmId);
+
+if (!empty($_SESSION['userNickname'])) {
+    $nickname = $_SESSION['userNickname'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,6 +43,9 @@ $pkmtype = getPokemonType($pkmId);
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="types.php">Liste des types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tableau des faiblesses</a>
                         </li>
                     </ul>
                 </div>
