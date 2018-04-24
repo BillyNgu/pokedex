@@ -7,7 +7,7 @@
 
 require_once './dao/dao.php';
 
-$attack = '<a class="nav-link active" href="#">Liste des attaques</a>';
+$attack = TRUE;
 $cpt = 0;
 $nomColl = array("Attaque", "Puissance", "Précision", "Type");
 $allAttacks = getAllAttack();

@@ -2,7 +2,7 @@
 
 require_once './dao/dao.php';
 
-$weakness_tab = '<a class="nav-link active" href="#">Tableau des faiblesses</a>';
+$weakness_tab = TRUE;
 
 if (!empty($_SESSION['userNickname'])) {
     $nickname = $_SESSION['userNickname'];

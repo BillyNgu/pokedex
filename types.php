@@ -7,7 +7,7 @@
 
 require_once './dao/dao.php';
 
-$types = '<a class="nav-link active" href="#">Liste des types</a>';
+$types = TRUE;
 $nomColl = array("Types", "Nom");
 $allTypes = getAllTypes();
 

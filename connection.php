@@ -7,7 +7,7 @@
 
 require_once './dao/dao.php';
 
-$connection = '<a class="nav-link active" href="#">Connexion</a>';
+$connection = TRUE;
 $message = GetFlashMessage();
 
 

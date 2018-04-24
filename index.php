@@ -7,7 +7,7 @@
 
 require_once './dao/dao.php';
 
-$index = '<a class="nav-link active" href="#">Index</a>';
+$index = TRUE;
 
 $nomColl = array("#", "Sprite", "Nom", "Type");
 $allPokemon = getAllPokemon();
