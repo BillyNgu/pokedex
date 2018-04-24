@@ -8,7 +8,6 @@ if (!empty($_SESSION['userNickname'])) {
 }
 
 $allTypes = getAllTypeImages();
-$strengthFactor = getStrengthFactor();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +23,6 @@ $strengthFactor = getStrengthFactor();
             <table>
                 <tr>
                     <td></td>
-                    <?php // var_dump($allTypes);  ?>
                     <?php foreach ($allTypes as $key => $type): ?>
                         <td>
                             <img src="data:image/jpeg;base64,<?= base64_encode($type['typeImage']); ?>">
@@ -32,16 +30,17 @@ $strengthFactor = getStrengthFactor();
                     <?php endforeach; ?>
                 </tr>
                 <?php foreach ($allTypes as $key => $type): ?>
+                    <?php $factor = getStrengthFactor($type['typeImage']); ?>
                     <tr>
                         <td>
                             <img src="data:image/jpeg;base64,<?= base64_encode($type['typeImage']); ?>">
                         </td>
-                        <?php foreach ($strengthFactor as $key => $factorValue): ?>
+                        <?php foreach ($factor as $key => $multiplier): ?>
                             <td>
-                                x<?= $factorValue['strengthFactor']; ?>
+                                x<?php echo $multiplier['strengthFactor']; ?>
                             </td>
                         <?php endforeach; ?>
-                    </tr>
+                    </tr>                   
                 <?php endforeach; ?>
             </table>
         </div>

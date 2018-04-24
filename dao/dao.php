@@ -39,10 +39,11 @@ function getAllTypeImages() {
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getStrengthFactor() {
+function getStrengthFactor($typeImage) {
 //    $sql = "SELECT * FROM `weakness` ORDER BY `weakness`.`defendTypeId`, `weakness`.`attackTypeId` ASC";
-    $sql = "SELECT * FROM `weakness` ORDER BY `weakness`.`weaknessId` ASC";
+    $sql = "SELECT `weakness`.`strengthFactor` FROM `weakness`, `type` WHERE `weakness`.`defendTypeId` = (SELECT `typeId` FROM `type` WHERE `typeImage` = :typeImage)";
     $query = pokedb()->prepare($sql);
+    $query->bindParam(':typeImage', $typeImage, PDO::PARAM_STR);
     $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }
