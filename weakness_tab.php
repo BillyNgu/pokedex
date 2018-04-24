@@ -30,12 +30,11 @@ $allTypes = getAllTypeImages();
                     <?php endforeach; ?>
                 </tr>
                 <?php foreach ($allTypes as $key => $type): ?>
-                    <?php $factor = getStrengthFactor($type['typeImage']); ?>
                     <tr>
                         <td>
                             <img src="data:image/jpeg;base64,<?= base64_encode($type['typeImage']); ?>">
                         </td>
-                        <?php foreach ($factor as $key => $multiplier): ?>
+                        <?php foreach (getStrengthFactor($type['typeImage']) as $key => $multiplier): ?>
                             <td>
                                 x<?php echo $multiplier['strengthFactor']; ?>
                             </td>
