@@ -16,7 +16,7 @@ if (isset($_POST['register'])) {
     $Date = date("Y-m-d H:i:s");
 
     $errors = [];
-    
+
     if (empty($Nickname)) {
         $errors['Nickname'] = 'Le pseudo ne peut pas être vide.';
     }

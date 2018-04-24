@@ -32,6 +32,21 @@ function getAllTypes() {
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getAllTypeImages() {
+    $sql = "SELECT `typeImage` FROM `type` ORDER BY `typeName` ASC";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+    return $result = $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getStrengthFactor() {
+//    $sql = "SELECT * FROM `weakness` ORDER BY `weakness`.`defendTypeId`, `weakness`.`attackTypeId` ASC";
+    $sql = "SELECT * FROM `weakness` ORDER BY `weakness`.`weaknessId` ASC";
+    $query = pokedb()->prepare($sql);
+    $query->execute();
+    return $result = $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 /**
  * Get all attacks
  * @return array
