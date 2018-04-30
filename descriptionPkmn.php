@@ -44,6 +44,7 @@ if (!empty($_SESSION['userNickname'])) {
                         <?= $pokemonDescription['pokemonId']; ?> - <?= $pokemonDescription['pokemonName']; ?>
                     </td>
                     <td>
+                        <!-- Next Pokemon -->
                         <?php if ($pokemonDescription['pokemonId'] != 151): ?>
                             <a href="descriptionPkmn.php?pokemonId=<?= $pokemonDescriptionNext['pokemonId']; ?>">
                                 <img class="card-img-top" style="width: 32px;" src="data:image/jpeg;base64, <?= base64_encode($pokemonDescriptionNext['pokemonSprite']); ?>" />
