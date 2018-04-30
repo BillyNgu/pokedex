@@ -11,9 +11,9 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <?php if (!empty($index)): ?>
-                    <a class="nav-link active" href="#">Index</a>
+                    <a class="nav-link active" href="#">Accueil</a>
                 <?php else: ?>
-                    <a class="nav-link" href="index.php">Index</a>
+                    <a class="nav-link" href="index.php">Accueil</a>
                 <?php endif; ?>
             </li>
             <li class="nav-item">

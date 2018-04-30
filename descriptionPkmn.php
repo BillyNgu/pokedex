@@ -26,33 +26,7 @@ if (!empty($_SESSION['userNickname'])) {
     </head>
     <body class="body">
         <div class="container">
-            <nav class="mb-3 navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="index.php">Pokédex</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">Index<span class="sr-only">(current)</span></a>        
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="attacks.php">Liste des attaques</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="types.php">Liste des types</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tableau des faiblesses</a>
-                        </li>
-                    </ul>
-                </div>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="connection.php">Connexion</a>
-                    </li>
-                </ul>
-            </nav>
+            <?php require_once './navbar.php'; ?>
             <table class="table">
                 <tr>
                     <td>
