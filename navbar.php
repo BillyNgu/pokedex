@@ -45,7 +45,11 @@
                 <a class="nav-link active">Bienvenue <?= $nickname; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active"></a>
+                <?php if (!empty($create_team)): ?>
+                <a class="nav-link active" href="#">Créer mon équipe</a>
+                <?php else: ?>
+                <a class="nav-link" href="create_team.php">Créer mon équipe</a>
+                <?php endif; ?>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">Déconnexion</a>
